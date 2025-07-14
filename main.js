@@ -2,15 +2,12 @@ import { LinkedList } from "./LinkedList.js";
 
 const list = new LinkedList();
 
-list.append("dog");
-list.append("cat");
-list.append("cow");
-list.append("horse");
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
 
 console.log(list.toString());
 
-list.insertAt("pig", 0);
-console.log(list.toString());
-
-list.prepend("bigPig");
+list.removeAt(1);
 console.log(list.toString());

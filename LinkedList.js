@@ -174,4 +174,35 @@ export class LinkedList {
     newNode.nextNode = current.nextNode;
     current.nextNode = newNode;
   }
+
+  removeAt(index) {
+    if (index < 0 || this.headNode === null) {
+      console.log("Unvalid index / An empty list");
+      return;
+    }
+
+    if (index === 0) {
+      this.headNode = this.headNode.nextNode;
+      return;
+    }
+
+    let current = this.headNode;
+    let i = 0;
+
+    // while we're not at the end && one node brfore what we want to erase...
+    while (current !== null && i < index - 1) {
+      current = current.nextNode;
+      i++;
+    }
+
+    // if we reached the end before the index just exit
+    if (current === null || current.nextNode === null) return;
+
+    // THE line --> we detuor the desired node...
+    // The next node of current (what we want to erase) is the next next - thus detour.
+    current.nextNode = current.nextNode.nextNode;
+  }
 }
+
+// ( dog ) -> ( cat ) -> ( COW ) -> ( horse ) -> null
+// ( dog ) -> ( cat ) -> ( horse ) -> null
