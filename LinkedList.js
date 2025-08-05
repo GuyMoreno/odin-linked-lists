@@ -18,20 +18,14 @@ export class LinkedList {
       return;
     }
 
-    // creating a var to walk through the list
+    // handle the general case:
+
+    // walking chain ⛓️‍💥, create a temp pointer
     let current = this.headNode;
 
-    // while we didn't reach the end of the list
-    // we chech the object's nextNode... property
     while (current.nextNode !== null) {
-      // keep going to the nextNode
-      // so while current.nextNode is not null
-      // the current object is the nextNode
       current = current.nextNode;
     }
-
-    // only when we reach the end of the list
-    // so we add the newNode
     current.nextNode = newNode;
   }
 
@@ -90,17 +84,20 @@ export class LinkedList {
 
   // returns the node at the given index
   at(index) {
-    if (index < 0) return null;
-
-    let current = this.headNode;
-    let i = 0;
-
-    while (current !== null) {
-      if (i === index) return current;
-      current = current.nextNode;
-      i++;
+    if (index < 0) {
+      return null;
     }
 
+    let current = this.headNode;
+    let count = 0;
+
+    while (current !== null) {
+      if (count === index) {
+        return current;
+      }
+      current = current.nextNode;
+      count++;
+    }
     return null;
   }
 
