@@ -7,7 +7,6 @@ export class LinkedList {
     this.headNode = null;
   }
 
-  // adding new value object node:
   append(value) {
     const newNode = new Node(value);
     // if empty (no headNode) when adding new:
@@ -43,7 +42,6 @@ export class LinkedList {
     return result;
   }
 
-  // add new obj to beginning
   prepend(value) {
     // create a new node with the value
     const newNode = new Node(value);
@@ -82,7 +80,6 @@ export class LinkedList {
     return current;
   }
 
-  // returns the node at the given index
   at(index) {
     if (index < 0) {
       return null;
@@ -127,6 +124,7 @@ export class LinkedList {
 
     while (current) {
       if (current.value === value) return true;
+
       current = current.nextNode;
     }
 
@@ -148,7 +146,7 @@ export class LinkedList {
 
   insertAt(value, index) {
     if (index < 0 || index > this.size()) {
-      console.log("Invalid index");
+      console.log("ERROR: invalid index");
       return;
     }
 
@@ -186,20 +184,16 @@ export class LinkedList {
     let current = this.headNode;
     let i = 0;
 
-    // while we're not at the end && one node brfore what we want to erase...
+    //  0         1        2
+    // ( 1 ) -> ( 2 ) -> ( 3 ) -> null
+
     while (current !== null && i < index - 1) {
       current = current.nextNode;
       i++;
     }
 
-    // if we reached the end before the index just exit
     if (current === null || current.nextNode === null) return;
 
-    // THE line --> we detuor the desired node...
-    // The next node of current (what we want to erase) is the next next - thus detour.
     current.nextNode = current.nextNode.nextNode;
   }
 }
-
-// ( dog ) -> ( cat ) -> ( COW ) -> ( horse ) -> null
-// ( dog ) -> ( cat ) -> ( horse ) -> null
